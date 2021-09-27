@@ -1,5 +1,6 @@
 <?php
 require_once './vendor/autoload.php';
+
 use ExemploPDOMySQL\MySQLConnection; //PDO
 
 $bd = new MySQLConnection(); //PDO('mysql:host=localhost;dbname=biblioteca', 'root', '');
@@ -22,11 +23,14 @@ $generos = $comando->fetchAll(PDO::FETCH_ASSOC);
             <tr>
                 <th>Id</th>
                 <th>Nome</th>
+                <th>&nbsp;</th>
             </tr>
             <?php foreach($generos as $g): ?>
                 <tr>
                     <td><?= $g['id'] ?></td>
                     <td><?= $g['nome'] ?></td>
+                    <td>
+                        <a href="update.php?id=<?= $g['id'] ?>">Editar</a>
                 </tr>
             <?php endforeach ?>
         </table>
